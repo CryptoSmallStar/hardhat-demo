@@ -7,7 +7,7 @@ describe("SGToken", function () {
 
   beforeEach(async function() {
     [owner] = await ethers.getSigners();
-    SGTToken = await ethers.getContractFactory("SGToken");
+    SGTToken = await ethers.getContractFactory("contracts/SGTokeFlatten.sol:SGToken");
     instance = await SGTToken.deploy(initialSupply);
     await instance.deployed();
   })

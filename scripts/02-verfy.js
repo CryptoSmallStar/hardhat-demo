@@ -15,14 +15,14 @@ async function main() {
 
   // We get the contract to deploy
   const initialSupply = ethers.BigNumber.from(100000000);
-  const SGTToken = await ethers.getContractFactory("contracts/SGTokeFlatten.sol:SGToken");
-  const instance = await SGTToken.deploy(initialSupply);
-  await instance.deployed();
+  // const SGTToken = await ethers.getContractFactory("SGToken");
+  // const instance = await SGTToken.deploy(initialSupply);
+  // await instance.deployed();
 
-  console.log("SGTToken deployed to:", instance.address);
+  // console.log("SGTToken deployed to:", instance.address);
 
   await hre.run("verify:verify", {
-    address: instance.address,
+    address: "0x4cdCf42d40288A6da325bF409903f7Ea09eBd53e",
     contract: "contracts/SGTokeFlatten.sol:SGToken",
     constructorArguments: [
       initialSupply

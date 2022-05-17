@@ -1,4 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
+require("@nomiclabs/hardhat-etherscan");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -18,4 +20,37 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  // solidity: {
+  //   version: '0.8.4',
+  //   settings: {
+  //     optimizer: {
+  //       enabled: true,
+  //       runs: 200,
+  //     },
+  //   },
+  // },
+  // contractSizer: {
+  //   alphaSort: true,
+  //   runOnCompile: true,
+  //   disambiguatePaths: false,
+  // },
+  networks:{
+    rinkeby:{
+      url:`https://rinkeby.infura.io/v3/${process.env.INFORA_ID}`,
+      accounts:[`${process.env.PRIVATE_KEY}`]
+    },
+    bsctest:{
+      url:`https://data-seed-prebsc-1-s3.binance.org:8545`,
+      accounts:[`${process.env.PRIVATE_KEY}`]
+    },
+  },
+  etherscan: {
+    // etherscan:
+    // bscscan:
+    apiKey:{
+      rinkeby: `${process.env.ETHERSCAN_RINKEBY}`,
+      bscTestnet: `${process.env.ETHERSCAN_BSCTESTNET}`
+    },
+  },
+
 };
